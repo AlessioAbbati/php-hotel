@@ -1,6 +1,7 @@
 <?php
 
-function convertBooleanToString($value) {
+function convertBooleanToString($value)
+{
     if (is_bool($value)) {
         return $value ? 'si' : 'no';
     }
@@ -65,22 +66,46 @@ $hotels = [
 
 <body>
     <div class="container">
+        <form class="d-flex gap-2" method="GET">
+            <select class="form-select w-25 mb-3" aria-label="Default select example">
+                <option selected>Tutti</option>
+                <option value="1">Con Parcheggio</option>
+                <option value="2">Senza Parcheggio</option>
+            </select>
+
+            <select class="form-select w-25 mb-3" aria-label="Default select example">
+                <option selected>Tutti</option>
+                <option value="1">Voto 1</option>
+                <option value="2">Voto 2</option>
+                <option value="3">Voto 3</option>
+                <option value="4">Voto 4</option>
+                <option value="5">Voto 5</option>
+            </select>
+
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary" type="submit">Cerca</button>
+                <button class="btn btn-danger" type="reset">Cancella</button>
+            </div>
+        </form>
+
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
-                    <?php foreach($hotels[0] as $key => $hotel) { ?>
+                    <?php foreach ($hotels[0] as $key => $hotel) { ?>
                         <th><?= $key ?></th>
                     <?php } ?>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($hotels as $hotel) { ?>
+                <?php foreach ($hotels as $hotel) { ?>
                     <tr>
-                        <?php foreach($hotel as $value) { ?>
+                        <?php foreach ($hotel as $value) { ?>
                             <td scope="row"><?= convertBooleanToString($value) ?></td>
-                        <?php } // end 2ST foreach ?>
-                    </tr> 
-                <?php } // end 1ST foreach ?>
+                        <?php } // end 2ST foreach 
+                        ?>
+                    </tr>
+                <?php } // end 1ST foreach 
+                ?>
             </tbody>
 
         </table>
