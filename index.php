@@ -51,6 +51,15 @@
     <title>PHP Hotel</title>
 </head>
 <body>
+    <div>
+        <?php foreach($hotels as $hotel => $elements) { ?>
+            <h2><?= $hotel ?></h2><?php
+            foreach($elements as $element) {
+                echo $element . '<br>';
+            }
+        } ?>
+    </div>
     
+
 </body>
 </html>
