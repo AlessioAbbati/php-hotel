@@ -1,5 +1,12 @@
 <?php
 
+function convertBooleanToString($value) {
+    if (is_bool($value)) {
+        return $value ? 'si' : 'no';
+    }
+    return $value;
+}
+
 $hotels = [
 
     [
@@ -60,22 +67,20 @@ $hotels = [
     <div class="container">
         <table class="table table-dark table-striped">
             <thead>
-            <?php foreach($hotels as $key => $hotel) { ?>
                 <tr>
-                    <th><?= $key ?></th>
+                    <?php foreach($hotels[0] as $key => $hotel) { ?>
+                        <th><?= $key ?></th>
+                    <?php } ?>
                 </tr>
-            <?php } ?>
             </thead>
             <tbody>
-            <?php foreach($hotels as $hotel) { ?>
-                <tr>
-                    <td scope="row"><?= $hotel['name'] ?></td>
-                    <td scope="row"><?= $hotel['description'] ?></td>
-                    <td scope="row"><?= $hotel['parking'] ?></td>
-                    <td scope="row"><?= $hotel['vote'] ?></td>
-                    <td scope="row"><?= $hotel['distance_to_center'] ?></td>
-                </tr> 
-            <?php } ?>
+                <?php foreach($hotels as $hotel) { ?>
+                    <tr>
+                        <?php foreach($hotel as $value) { ?>
+                            <td scope="row"><?= convertBooleanToString($value) ?></td>
+                        <?php } // end 2ST foreach ?>
+                    </tr> 
+                <?php } // end 1ST foreach ?>
             </tbody>
 
         </table>
