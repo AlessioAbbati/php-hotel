@@ -60,13 +60,11 @@ $hotels = [
     <div class="container">
         <table class="table table-dark table-striped">
             <thead>
+            <?php foreach($hotels as $key => $hotel) { ?>
                 <tr>
-                    <th>name</th>
-                    <th>description</th>
-                    <th>parking</th>
-                    <th>vote</th>
-                    <th>distance to center</th>
+                    <th><?= $key ?></th>
                 </tr>
+            <?php } ?>
             </thead>
             <tbody>
             <?php foreach($hotels as $hotel) { ?>
