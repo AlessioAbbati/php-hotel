@@ -60,9 +60,12 @@ $hotels = [
     <div class="container">
         <table class="table table-dark table-striped">
             <thead>
-                
                 <tr>
-                    <th></th>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>parking</th>
+                    <th>vote</th>
+                    <th>distance to center</th>
                 </tr>
             </thead>
             <tbody>
