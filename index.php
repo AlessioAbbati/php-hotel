@@ -1,5 +1,6 @@
 <?php
 
+
 function convertBooleanToString($value)
 {
     if (is_bool($value)) {
@@ -68,13 +69,13 @@ $hotels = [
     <div class="container">
         <form class="d-flex gap-2" method="GET">
             <select name="parking" class="form-select w-25 mb-3" aria-label="Default select example">
-                <option selected>Tutti</option>
+                <option value="" selected>Tutti</option>
                 <option value="1">Con Parcheggio</option>
                 <option value="2">Senza Parcheggio</option>
             </select>
 
             <select name="vote" class="form-select w-25 mb-3" aria-label="Default select example">
-                <option selected>Tutti</option>
+                <option value="" selected>Tutti</option>
                 <option value="1">Voto 1</option>
                 <option value="2">Voto 2</option>
                 <option value="3">Voto 3</option>
@@ -97,13 +98,22 @@ $hotels = [
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $hotel) { ?>
-                    <tr>
-                        <?php foreach ($hotel as $value) { ?>
-                            <td scope="row"><?= convertBooleanToString($value) ?></td>
-                        <?php } // end 2ST foreach ?>
-                    </tr>
-                <?php } // end 1ST foreach ?>
+                <?php foreach ($hotels as $hotel) {
+                    // Applica i filtri solo se sono stati selezionati
+                    $parkingFilter = isset($_GET['parking']) && $_GET['parking'] !== '' ? intval($_GET['parking']) : null;
+                    $voteFilter = isset($_GET['vote']) && $_GET['vote'] !== '' ? intval($_GET['vote']) : null;
+
+                    // Effettua il filtraggio
+                    if (($parkingFilter === null || $hotel['parking'] == $parkingFilter) &&
+                        ($voteFilter === null || $hotel['vote'] == $voteFilter)) {
+                        ?>
+                        <tr>
+                            <?php foreach ($hotel as $value) { ?>
+                                <td scope="row"><?= convertBooleanToString($value) ?></td>
+                            <?php } // end 2nd foreach ?>
+                        </tr>
+                <?php } // end filtering condition
+                } // end 1st foreach ?>
             </tbody>
 
         </table>
