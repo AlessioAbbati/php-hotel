@@ -67,13 +67,13 @@ $hotels = [
 <body>
     <div class="container">
         <form class="d-flex gap-2" method="GET">
-            <select class="form-select w-25 mb-3" aria-label="Default select example">
+            <select name="parking" class="form-select w-25 mb-3" aria-label="Default select example">
                 <option selected>Tutti</option>
                 <option value="1">Con Parcheggio</option>
                 <option value="2">Senza Parcheggio</option>
             </select>
 
-            <select class="form-select w-25 mb-3" aria-label="Default select example">
+            <select name="vote" class="form-select w-25 mb-3" aria-label="Default select example">
                 <option selected>Tutti</option>
                 <option value="1">Voto 1</option>
                 <option value="2">Voto 2</option>
@@ -101,11 +101,9 @@ $hotels = [
                     <tr>
                         <?php foreach ($hotel as $value) { ?>
                             <td scope="row"><?= convertBooleanToString($value) ?></td>
-                        <?php } // end 2ST foreach 
-                        ?>
+                        <?php } // end 2ST foreach ?>
                     </tr>
-                <?php } // end 1ST foreach 
-                ?>
+                <?php } // end 1ST foreach ?>
             </tbody>
 
         </table>
